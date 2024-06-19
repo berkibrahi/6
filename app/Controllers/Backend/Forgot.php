@@ -4,8 +4,10 @@
 namespace App\Controllers\Backend;
 
 use \App\Controllers\BaseController;
+use App\Entities\UserEntity;
 use App\Libraries\EmailTo;
 use App\Models\UserModel;
+use Predis\Command\Argument\Server\To;
 
 class Forgot extends BaseController
 {
@@ -13,6 +15,7 @@ class Forgot extends BaseController
     protected $session;
     protected $userModel;
     protected $emailTo;
+    protected $userEntity;
 
     public function __construct()
     {
@@ -20,6 +23,7 @@ class Forgot extends BaseController
         $this->session = \Config\Services::session();
         $this->userModel = new UserModel();
         $this->emailTo = new EmailTo();
+        $this->userEntity=new UserEntity();
     }
 
     public function index()
@@ -56,7 +60,30 @@ class Forgot extends BaseController
 
     public function resetPassword()
     {
-        return view("admin/pages/auth/reset-password");
+        $tempData=$this->session->getTempdata("userId");
+        if($tempData){
+            if($this->request->is("post")){
+                $data = [
+                    'password' => $this->request->getPost('password'),
+                    'password2' => $this->request->getPost('password2')
+                  ];
+                  if(!$this->validation->run($data, 'resetPassword')){
+                    $this->session->setFlashdata(['errors' => $this->validation->getErrors()]);
+                    return redirect()->to(route_to('admin_reset_password'));
+                }
+                $this->userEntity->setVerifyKey();
+                $this->userEntity->setPassword($data["password"]);
+                $update=$this->userModel->update($tempData,$this->userEntity);
+                if(!$update){
+                    return redirect()->to(route_to("admin_reset_password"));
+                }
+                $this->session->destroy();
+                return view("admin/pages/verify/reset-password-success");
+            }
+            return view("admin/pages/auth/reset-password");
+        }
+        return view("admin/pages/verify/reset-password-error");
+       
     }
 
 

@@ -27,7 +27,7 @@
     </div>
     
     <div class="card-body">
-    
+    <?= $this->include("admin/layout/partials/errors");?>
       <p class="login-box-msg">Şifrenizi mi unuttunuz? Burada kolayca yeni bir şifre alabilirsiniz.</p>
       <form method="post">
         <div class="input-group mb-3">
@@ -49,7 +49,7 @@
         <a href="login.html">Giriş Yap</a>
       </p>
     </div>
-    <?= $this->include("admin/layout/partials/errors");?>
+  
     <!-- /.login-card-body -->
   </div>
 </div>

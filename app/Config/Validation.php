@@ -98,6 +98,28 @@ public $forgot=[
         ]
     ],
 ];
+public $resetPassword=[
+    'password' => [
+           
+           
+           
+        'rules' => 'required|min_length[6]',
+        'errors' => [
+            'required' => 'Şifre alanı zorunludur.',
+            'min_length' => 'Şifre en az 6 karakter uzunluğunda olmalıdır.'
+        ]
+    ],
+    'password2' => [
+      
+        
+        'rules' => 'required|matches[password]',
+        'errors' => [
+            'required' => 'Şifre doğrulama alanı zorunludur.',
+            'matches' => 'Şifreler eşleşmiyor.'
+        ]
+    ]
+
+];
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
