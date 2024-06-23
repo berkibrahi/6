@@ -1,4 +1,9 @@
 <?php $this->extend("admin/layout/main");?>
+
+<?php $this->section("title");?>
+<title>Kayıt Ol</title>
+<?php $this->endSection();?>
+
 <?php $this->section("content");?>
 <div class="register-box">
 <?= $this->include("admin/layout/partials/errors");?>
@@ -75,7 +80,7 @@
 
      
 
-      <a href="login.html" class="text-center"><?=lang("Register.view.member")?></a>
+      <a href="<?= base_url(route_to('admin_login')); ?>" class="text-center">Zaten Hesabın Var Mı?</a>
     </div>
     <!-- /.form-box -->
   </div>

@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Registration Page (v2)</title>
-
-  <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://localhost/6/public/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="https://localhost/6/public/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="https://localhost/6/public/admin/css/adminlte.min.css">
-  
- 
-</head>
-<body class="hold-transition register-page">
-
+<?php $this->extend("admin/layout/main");?>
+<?php $this->section("title");?>
+<title>Şifremi Unuttum</title>
+<?php $this->endSection();?>
+<?php $this->section("content");?>
 <div class="register-box">
 <div class="login-box">
   <div class="card card-outline card-primary">
@@ -46,7 +30,7 @@
         </div>
       </form>
       <p class="mt-3 mb-1">
-        <a href="login.html">Giriş Yap</a>
+        <a href="<?= base_url(route_to('admin_login')); ?>">Giriş Yap</a>
       </p>
     </div>
   
@@ -54,14 +38,5 @@
   </div>
 </div>
 
-<!-- jQuery -->
-<script src="https://localhost/6/public/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="https://localhost/6/public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-
-<script src="https://localhost/6/public/admin/js/adminlte.min.js"></script>
-
-</body>
-</html>
+<?php $this->endSection();?>
 
