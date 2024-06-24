@@ -120,7 +120,29 @@ public $resetPassword=[
     ]
 
 ];
+public $login=[
+    'email' => [
+            
+           
+        'rules' => 'required|valid_email',
+        'errors' => [
+            'required' => 'Email alanı zorunludur.',
+            'valid_email' => 'Geçerli bir email adresi girin.'
+        ]
+    ],
+    'password' => [
+           
+           
+           
+        'rules' => 'required|min_length[6]',
+        'errors' => [
+            'required' => 'Şifre alanı zorunludur.',
+            'min_length' => 'Şifre en az 6 karakter uzunluğunda olmalıdır.'
+        ]
+    ],
+];
     // --------------------------------------------------------------------
-    // Rules
+ 
+     // Rules
     // --------------------------------------------------------------------
 }

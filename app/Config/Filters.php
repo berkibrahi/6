@@ -34,6 +34,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'IsLoggedIn'    =>\App\Filters\IsLoggedIn::class,
+        'IsPermissions'    =>\App\Filters\IsPermissions::class,
     ];
 
     /**
@@ -51,6 +53,7 @@ class Filters extends BaseFilters
      */
     public array $required = [
         'before' => [
+            
             'forcehttps', // Force Global Secure Requests
             'pagecache',  // Web Page Caching
         ],
@@ -69,6 +72,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
+           
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
@@ -103,5 +107,18 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+        'IsLoggedIn'=>[
+            "before"=>[
+                "/admin/*"
+            ]
+
+        ],
+        'IsPermissions'=>[
+            "before"=>[
+                "/admin/*"
+            ]
+
+        ],
+    ];
 }

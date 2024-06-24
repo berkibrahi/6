@@ -1,4 +1,7 @@
 <?php $this->extend("admin/layout/main");?>
+<?php $this->section("title");?>
+<title>Şifre Yenileme</title>
+<?php $this->endSection();?>
 <?php $this->section("content");?>
 <div class="login-box">
   <div class="card card-outline card-primary">

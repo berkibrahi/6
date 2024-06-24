@@ -17,6 +17,9 @@ class Verification extends BaseController{
 
     public function account($token){
         $explode=explode(".",$token);
+        if(!isset($explode[1]) || !isset($explode[0])){
+            return view('admin/pages/verify/account-error');
+        }
         $userId=$explode[0];
         $verifyKey=$explode[1];
        $user= $this->userModel->where([
@@ -40,6 +43,9 @@ class Verification extends BaseController{
 public function forgot($token){
     
  $explode=explode(".",$token);
+ if(!isset($explode[1]) || !isset($explode[0])){
+    return view('admin/pages/verify/account-error');
+}
         $userId=$explode[0];
         $verifyKey=$explode[1];
        $user= $this->userModel->where([
